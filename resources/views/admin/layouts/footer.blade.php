@@ -233,11 +233,11 @@
 <script src="{{ url('/design/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ url('/design/adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
-<!-- AdminLTE App -->
+<!-- adminlte App -->
 <script src="{{ url('/design/adminlte/dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- adminlte dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('/design/adminlte/dist/js/pages/dashboard.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
+<!-- adminlte for demo purposes -->
 <script src="{{ url('/design/adminlte/dist/js/demo.js')}}"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 /* Layout()
  * ========
- * Implements AdminLTE layout.
+ * Implements adminlte layout.
  * Fixes the layout height in case min-height fails.
  *
  * @usage activated automatically upon window load.
