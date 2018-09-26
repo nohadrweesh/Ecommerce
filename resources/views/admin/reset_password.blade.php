@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Reset Password</title>
+    <title>Reset Password/title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -34,7 +34,7 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Forgot Password</p>
+        <p class="login-box-msg">Sign in to start your session</p>
         @if(session()->has('success'))
         <div class="alert alert-success">
             <h1>{{ session('success') }}</h1>
@@ -42,13 +42,32 @@
 
         @endif
 
+        @if($errors->all())
+        <div class="alert alert-danger">
+            
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </div>
+        @endif
+
+
+
+
         <form method="post">
             {!! csrf_field() !!}
             <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="Email">
+                <input type="email" name="email" value="{{$data->email}}"class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-            
+            <div class="form-group has-feedback">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
             <div class="row">
                
                 <!-- /.col -->
