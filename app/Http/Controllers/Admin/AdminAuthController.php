@@ -79,10 +79,13 @@ class AdminAuthController extends Controller
         ->where('created_at','>',Carbon::now()->subhours(2))->first();
         if($check_token!=null){
 
-            $admin=Admin::where('email',$check_token->email)->update(['password'=>bcrypt(request('password'))]);
+            $admin=Admin::where('email',$check_token->email)->update([/*'email'=>$check_token->email,*/'password'=>bcrypt(request('password'))]);
 
             DB::table('password_resets')->where('email',$check_token->email)->delete();
-            admin()->login($admin);
+            //$admin=Admin::where('email',$check_token->email);
+            //dd($admin);
+            admin()->attempt(['email'=>request('email'),'password'=>request('password')]);
+            //admin()->login($admin);
             return redirect(admin_url());
 
 
