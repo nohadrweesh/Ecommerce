@@ -10,6 +10,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
 	Route::post('forgot/password','AdminAuthController@forgot_password_post');
 	Route::group(['middleware'=>'admin:admin'],function(){
 		//dd("here");
+		Route::resource('admin','AdminController');
 		Route::get('/',function(){
 
 			return view('admin.home');
