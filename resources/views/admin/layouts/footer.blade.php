@@ -212,6 +212,13 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ url('/design/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+
+<script src="{{ url('/design/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{ url('/design/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{ url('/design/adminlte/bower_components/datatables.net-bs/js/dataTables.buttons.min.js')}}"></script>
+
+<script src="{{ url('/vendor/datatables/buttons.server-side.js')}}"></script>
 <!-- Morris.js charts -->
 <script src="{{ url('/design/adminlte/bower_components/raphael/raphael.min.js') }}"></script>
 <script src="{{ url('/design/adminlte/bower_components/morris.js/morris.min.js') }}"></script>
@@ -239,5 +246,7 @@
 <script src="{{ url('/design/adminlte/dist/js/pages/dashboard.js')}}"></script>
 <!-- adminlte for demo purposes -->
 <script src="{{ url('/design/adminlte/dist/js/demo.js')}}"></script>
+@stack('js')
+@stack('css')
 </body>
 </html>

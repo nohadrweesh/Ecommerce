@@ -8,11 +8,15 @@
   <!-- /.box-header -->
   <div class="box-body">
    
-     {!! $dataTable->table(['class'=>"table table-bordered table-hover"])!!}
+     {!! $dataTable->table(['class'=>"dataTable table table-striped  table-bordered table-hover"],true)!!}
    
   </div>
   <!-- /.box-body -->
 </div>
+@push('js')
+ {!! $dataTable->scripts()!!}
+ @endpush
+
 
 
 @stop

@@ -197,6 +197,15 @@
               </li>
             </ul>
           </li>
+          <!--Lang-->
+          <li class="dropdown ">
+           
+            <ul class="dropdown-menu">
+              <li><a href="">En</a></li>
+              <li><a href="">العربيه</a></li>
+              
+            </ul>
+          </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
