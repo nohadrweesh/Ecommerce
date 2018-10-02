@@ -198,12 +198,22 @@
             </ul>
           </li>
           <!--Lang-->
-          <li class="dropdown ">
+          <!--<li class="dropdown user user-menu">
            
             <ul class="dropdown-menu">
               <li><a href="">En</a></li>
               <li><a href="">العربيه</a></li>
               
+            </ul>
+          </li>-->
+
+           <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             <i class="fa fa-globe"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li> <a href="{{admin_url('lang/en')}}">EN</a></li>
+              <li> <a href="{{admin_url('lang/ar')}}">العربيه</a></li>
             </ul>
           </li>
           <!-- User Account: style can be found in dropdown.less -->

@@ -16,11 +16,13 @@ class AdminDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
+            ->addColumn('checkbox', 'admin.admins.btn.checkbox')
             ->addColumn('edit', 'admin.admins.btn.edit')
             ->addColumn('delete', 'admin.admins.btn.delete')
             ->rawColumns([
                 'edit',
-                'delete'
+                'delete',
+                'checkbox'
              ]);
     }
 
@@ -52,15 +54,19 @@ class AdminDatatable extends DataTable
                         'dom'=>'Blfrip',/* for exporting*/
                         'lengthMenu'=>[[10,25,50,100,-1],[10,25,50,100,'All Record']],
                         'buttons'=>[
+
                             ['extend'=>'print','className'=>'btn btn-primary','text'=>'<i class="fa fa-print"></i>'],
                             ['extend'=>'csv','className'=>'btn btn-info','text'=>'<i class="fa fa-file"></i>'.trans('admin.ex_csv')],
                             ['extend'=>'excel','className'=>'btn btn-success','text'=>'<i class="fa fa-file"></i>'.trans('admin.ex_excel')],
                             ['extend'=>'reload','className'=>'btn btn-default','text'=>'<i class="fa fa-refresh"></i>'],
-                            ['text'=>'<i class="fa fa-plus"></i>','className'=>'btn btn-primary'
-                            ]
+                            ['text'=>'<i class="fa fa-plus"></i>','className'=>'btn btn-primary','action'=>"function(){
+
+                                window.location.href=  ' " .\URL::Current()."/create ' ;
+                            }"],
+                             ['className'=>'btn btn-danger delBtn','text'=>'<i class="fa fa-trash"></i>']
                         ],
                         'initComplete'=>" function () {
-                            this.api().columns([0,1,2,3]).every(function () {
+                            this.api().columns([2,3,4,5]).every(function () {
                                 var column = this;
                                 var input = document.createElement(\"input\");
                                 $(input).appendTo($(column.footer()).empty())
@@ -69,30 +75,7 @@ class AdminDatatable extends DataTable
                                 });
                             });
                         }",
-                        'language'         => [
-                    'sProcessing'     => trans('admin.sProcessing'),
-                    'sLengthMenu'     => trans('admin.sLengthMenu'),
-                    'sZeroRecords'    => trans('admin.sZeroRecords'),
-                    'sEmptyTable'     => trans('admin.sEmptyTable'),
-                    'sInfo'           => trans('admin.sInfo'),
-                    'sInfoEmpty'      => trans('admin.sInfoEmpty'),
-                    'sInfoFiltered'   => trans('admin.sInfoFiltered'),
-                    'sInfoPostFix'    => trans('admin.sInfoPostFix'),
-                    'sSearch'         => trans('admin.sSearch'),
-                    'sUrl'            => trans('admin.sUrl'),
-                    'sInfoThousands'  => trans('admin.sInfoThousands'),
-                    'sLoadingRecords' => trans('admin.sLoadingRecords'),
-                    'oPaginate'       => [
-                        'sFirst'         => trans('admin.sFirst'),
-                        'sLast'          => trans('admin.sLast'),
-                        'sNext'          => trans('admin.sNext'),
-                        'sPrevious'      => trans('admin.sPrevious'),
-                    ],
-                    'oAria'            => [
-                        'sSortAscending'  => trans('admin.sSortAscending'),
-                        'sSortDescending' => trans('admin.sSortDescending'),
-                    ],
-                ],
+                        'language'        => datatable_lang(),
 
                     ]);
     }
@@ -105,6 +88,17 @@ class AdminDatatable extends DataTable
     protected function getColumns()
     {
         return [
+             [
+                'name'=>'checkbox',
+                'data'=>'checkbox',
+                'title'=>'<input type="checkbox" class="check_all" onclick="check_all()"/>',
+                'exportable'=>false,
+                'printable'=>false,
+                'orderable'=>false,
+                'serachable'=>false,
+                
+                
+            ],
             [
                 'name'=>'id',
                 'data'=>'id',

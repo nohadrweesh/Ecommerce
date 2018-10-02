@@ -10,6 +10,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
 	Route::post('forgot/password','AdminAuthController@forgot_password_post');
 	Route::group(['middleware'=>'admin:admin'],function(){
 		//dd("here");
+		Route::delete('admin/destroy/all','AdminController@multi_delete');
 		Route::resource('admin','AdminController');
 		Route::get('/',function(){
 
@@ -17,6 +18,16 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
 		});
 
 		Route::any('logout','AdminAuthController@logout');
+	});
+	Route::get('lang/{lang}',function($lang){
+		if(session()->has('lang'))
+			session()->forget('lang');
+		if($lang=='ar'){
+			session()->put('lang','ar');
+		}else{
+			session()->put('lang','en');
+		}
+		return back();
 	});
     
 });

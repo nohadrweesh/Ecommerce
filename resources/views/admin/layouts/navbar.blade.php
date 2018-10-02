@@ -47,7 +47,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class=" treeview">
           <a href="{{admin_url('/')}}">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>{{trans('dashboard')}}</span>
             
               
             </span>
@@ -57,14 +57,22 @@
 
         <li class=" treeview">
           <a href="#">
-            <i class="fa fa-users"></i> <span>Admin Accounts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-users"></i> <span>{{trans('dashboard')}}</span>
+           
+              @if(direction()=='ltr')
+               <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+              @else
+              <span class="pull-left-container">
+                <i class="fa fa-angle-right pull-left"></i>
+              </span>
+              @endif
+            
           </a>
           <ul class="treeview-menu">
            
-            <li><a href="{{admin_url('admin')}}"><i class="fa fa-users"></i> Admins</a></li>
+            <li><a href="{{admin_url('admin')}}"><i class="fa fa-users"></i>{{trans('dashboard')}} </a></li>
           </ul>
         </li>
 

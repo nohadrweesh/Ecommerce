@@ -1,1 +1,1 @@
-<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+<a href="{{admin_url('admin/'.$id.'/destroy')}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>

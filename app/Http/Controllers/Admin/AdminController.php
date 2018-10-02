@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\AdminDatatable;
+use App\Admin;
 
 class AdminController extends Controller
 {
@@ -27,6 +28,7 @@ class AdminController extends Controller
     public function create()
     {
         //
+        return view('admin.create');
     }
 
     /**
@@ -38,6 +40,21 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data=$this->validate($request,[
+            'name'=>'required',
+            'email'=>'required|email|unique:admins',
+            'password'=>'required:min:6'
+        ],[],[
+                'Name',
+                'Email',
+                'Password'
+        ]);
+        $data['password']=bcrypt(  $data['password']);
+
+        Admin::create($data);
+        session()->flash('success','Added New Admin');
+        return redirect(admin_url('admin'));
     }
 
     /**
@@ -60,6 +77,8 @@ class AdminController extends Controller
     public function edit($id)
     {
         //
+        $admin=Admin::findOrFail($id);
+        return view('admin.edit',compact('admin'));
     }
 
     /**
@@ -71,7 +90,25 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+          $data=$this->validate($request,[
+            'name'=>'required',
+            'email'=>'required|email|unique:admins,id'.$id,
+            'password'=>'sometimes|nullable|min:6'
+        ],[],[
+                'Name',
+                'Email',
+                'Password'
+        ]);
+          if(request()->has('password')){
+            $data['password']=bcrypt(  $data['password']);
+          }
+        
+          Admin::where('id',$id)->update($data);
+        session()->flash('success','Admin Information updated successfullly');
+        return redirect(admin_url('admin'));
+
+     //  return request()->all();
     }
 
     /**
@@ -83,5 +120,23 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+        Admin::where('id',$id)->delete();
+        session()->flash('success','Admin deleted successfullly');
+        return redirect(admin_url('admin'));
+    }
+
+    public function multi_delete(){
+//return request()->all();
+
+        if(is_array(request('item')   ) ){
+            Admin::destroy(request('item'));
+        }else{
+            Admin::find(request('item'))->delete();
+        }
+
+       
+        session()->flash('success','Admin(s) deleted successfullly');
+        return redirect(admin_url('admin'));
+
     }
 }
