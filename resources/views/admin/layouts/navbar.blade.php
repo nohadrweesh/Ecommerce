@@ -49,15 +49,14 @@
           <a href="{{admin_url('/')}}">
             <i class="fa fa-dashboard"></i> <span>{{trans('dashboard')}}</span>
             
-              
-            </span>
+           
           </a>
          
         </li>
 
         <li class=" treeview">
           <a href="#">
-            <i class="fa fa-users"></i> <span>{{trans('dashboard')}}</span>
+            <i class="fa fa-users"></i> <span>Admin Accounts</span>
            
               @if(direction()=='ltr')
                <span class="pull-right-container">
@@ -72,7 +71,33 @@
           </a>
           <ul class="treeview-menu">
            
-            <li><a href="{{admin_url('admin')}}"><i class="fa fa-users"></i>{{trans('dashboard')}} </a></li>
+            <li><a href="{{admin_url('admin')}}"><i class="fa fa-users"></i>Admin Accounts</a></li>
+          </ul>
+        </li>
+        
+        
+        
+        <li class=" treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Users Accounts</span>
+           
+              @if(direction()=='ltr')
+               <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+              @else
+              <span class="pull-left-container">
+                <i class="fa fa-angle-right pull-left"></i>
+              </span>
+              @endif
+            
+          </a>
+          <ul class="treeview-menu">
+           
+            <li><a href="{{admin_url('user')}}"><i class="fa fa-users"></i>Users Accounts</a></li>
+            <li><a href="{{admin_url('user?level=user')}}"><i class="fa fa-users"></i>Users</a></li>
+            <li><a href="{{admin_url('user?level=vendor')}}"><i class="fa fa-users"></i>Vendors</a></li>
+            <li><a href="{{admin_url('user?level=company')}}"><i class="fa fa-users"></i>Companies</a></li>
           </ul>
         </li>
 

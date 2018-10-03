@@ -3,11 +3,11 @@
 
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title">Add new admin</h3>
+    <h3 class="box-title">{{$title}}</h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body">
-  	{!! Form::open(['id'=>'form_data','url'=>admin_url('admin'),'method'=>'Post'])!!}
+  	{!! Form::model($admin,['id'=>'form_data','url'=>admin_url('user/'.$admin->id),'method'=>'Put'])!!}
    <div class="form-group">
      {!!  Form::label('name','Name')!!}
      {!! Form::text('name',old('name'),['class'=>'form-control'])!!}
@@ -21,7 +21,13 @@
       {!!  Form::label('password','Password')!!}
      {!! Form::password('password',old('password'),['class'=>'form-control'])!!}
 </div>
-     {!! Form::submit('Submit',['class'=>'btn btn-primary'])!!}
+    
+    <div class="form-group">
+
+              {!!  Form::label('level','Level')!!}
+             {!! Form::select('level',['user'=>'User','vendor'=>'Vendor','company'=>'Company'],null,['class'=>'form-control','placeholder'=>'..................'])!!}
+        </div>
+     {!! Form::submit('Edit',['class'=>'btn btn-primary'])!!}
 
 
 

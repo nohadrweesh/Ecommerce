@@ -11,10 +11,10 @@
         <h4 class="modal-title">Warning</h4>
       </div>
 
-      {!! Form::open(['id'=>'delete_admin','url'=>admin_url('admin/'.$id),'method'=>'delete'])!!}
+      {!! Form::open(['id'=>'delete_user','url'=>admin_url('user/'.$id),'method'=>'delete'])!!}
       <div class="modal-body">
         <div class="alert alert-danger">
-            <p>Are you sure you want to delete the Admin {{$name}}?</p>
+            <p>Are you sure you want to delete the User {{$name}}?</p>
         </div>
        
       </div>
