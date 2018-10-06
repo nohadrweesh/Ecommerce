@@ -1,7 +1,7 @@
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></button>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del_user{{$id}}"><i class="fa fa-trash"></i></button>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="del_user{{$id}}" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->

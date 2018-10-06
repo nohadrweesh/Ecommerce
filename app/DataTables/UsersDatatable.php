@@ -24,6 +24,7 @@ class UsersDatatable extends DataTable
                 'edit',
                 'delete',
                 'checkbox',
+                'level'
                 
              ]);
     }

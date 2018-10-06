@@ -45,14 +45,28 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class=" treeview">
-          <a href="{{admin_url('/')}}">
-            <i class="fa fa-dashboard"></i> <span>{{trans('dashboard')}}</span>
-            
-           
+        <li class="treeview">
+        <a href="#">
+          <i class="fa fa-list"></i> <span>{{ trans('admin.dashboard') }}</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class=""><a href="{{ admin_url('dashboard') }}">
+            <i class="fa fa-dashboard"></i> <span>{{ trans('admin.dashboard') }}</span>
+            <span class="pull-right-container">
+            </span>
           </a>
-         
         </li>
+        <li class=""><a href="{{ admin_url('settings') }}">
+          <i class="fa fa-cog"></i> <span>{{ trans('admin.settings') }}</span>
+          <span class="pull-right-container">
+          </span>
+        </a>
+      </li>
+    </ul>
+  </li>
 
         <li class=" treeview">
           <a href="#">

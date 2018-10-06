@@ -16,20 +16,25 @@ if(!function_exists('lang')){
 		if(session()->has('lang')){
             return session('lang');
         }else{
-            return 'en';
+            return setting()->main_lang;
         }
 	}
 }
 if(!function_exists('direction')){
 	function direction(){
-		if(session()->has('lang')){
+		/*if(session()->has('lang')){
             if( session('lang')=='ar')
             	return 'rtl';
             else
             	return 'ltr';
         }else{
             return 'ltr';
-        }
+        }*/
+        
+        if(lang()=='ar')
+            return 'rtl';
+        else
+            return 'ltr';
 	}
 }
 
@@ -59,5 +64,11 @@ if(!function_exists('datatable_lang')){
                         'sSortDescending' => trans('admin.sSortDescending'),
                     ],
                 ];
+	}
+}
+
+if(!function_exists('setting')){
+	function setting(){
+		return  \App\Model\Setting::orderBy('id','desc')->first();
 	}
 }
