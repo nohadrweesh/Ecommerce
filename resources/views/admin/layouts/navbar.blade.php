@@ -115,6 +115,30 @@
           </ul>
         </li>
 
+
+        <li class=" treeview">
+          <a href="#">
+            <i class="fa fa-flag"></i> <span>Countries</span>
+           
+              @if(direction()=='ltr')
+               <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+              @else
+              <span class="pull-left-container">
+                <i class="fa fa-angle-right pull-left"></i>
+              </span>
+              @endif
+            
+          </a>
+          <ul class="treeview-menu">
+           
+            <li><a href="{{admin_url('countries')}}"><i class="fa fa-flag"></i>Countries</a></li>
+            <li><a href="{{admin_url('countries/create')}}"><i class="fa fa-plus"></i>Add Country</a></li>
+            
+          </ul>
+        </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->

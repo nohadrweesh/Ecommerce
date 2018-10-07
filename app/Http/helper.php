@@ -72,3 +72,14 @@ if(!function_exists('setting')){
 		return  \App\Model\Setting::orderBy('id','desc')->first();
 	}
 }
+
+
+if(!function_exists('validate_image')){
+    function validate_image($ext=null){
+       if($ext==null){
+        return 'image|mimes:jpg,jpeg,gif,png,bmp';
+       }else{
+        return 'image|mimes:'.$ext;
+       }
+    }
+}
