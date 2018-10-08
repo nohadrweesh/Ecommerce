@@ -15,6 +15,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'], function () {
         
         Route::resource('user','UsersController');
         Route::delete('user/destroy/all','AdminController@multi_delete');
+
+		Route::resource('countries','CountriesController');
+		Route::delete('countries/destroy/all','CountriesController@multi_delete');
         
         Route::get('settings','SettingsController@settings');
         Route::post('settings','SettingsController@settings_save');

@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\User;
+use App\Model\Country;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDatatable extends DataTable
+class CountryDatatable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,15 +16,15 @@ class UsersDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('checkbox', 'admin.users.btn.checkbox')
-            ->addColumn('edit', 'admin.users.btn.edit')
-            ->addColumn('delete', 'admin.users.btn.delete')
-            ->addColumn('level', 'admin.users.btn.level')
+            ->addColumn('checkbox', 'admin.countries.btn.checkbox')
+            ->addColumn('edit', 'admin.countries.btn.edit')
+            ->addColumn('delete', 'admin.countries.btn.delete')
+            
             ->rawColumns([
                 'edit',
                 'delete',
-                'checkbox',
-                'level'
+                'checkbox'
+               
                 
              ]);
     }
@@ -39,10 +39,7 @@ class UsersDatatable extends DataTable
     {
        // return $model->newQuery()->select('id', 'add-your-columns-here', 'created_at', 'updated_at');
         //return User::query();
-        return User::query()->where(function($q){
-            if(request()->has('level'))
-                return $q->where('level',request('level'));
-        });
+        return Country::query();
     }
   
     /**
@@ -112,20 +109,16 @@ class UsersDatatable extends DataTable
                 'title'=>'Id',
             ],
              [
-                'name'=>'name',
-                'data'=>'name',
-                'title'=>'User Name',
-            ],
-             [
-                'name'=>'email',
-                'data'=>'email',
-                'title'=>'User Email',
+                'name'=>'country_name_ar',
+                'data'=>'country_name_ar',
+                'title'=>'Arabic',
             ],
             [
-                'name'=>'level',
-                'data'=>'level',
-                'title'=>'Membership',
+                'name'=>'country_name_en',
+                'data'=>'country_name_en',
+                'title'=>'English ',
             ],
+            
             [
                 'name'=>'created_at',
                 'data'=>'created_at',
@@ -170,6 +163,6 @@ class UsersDatatable extends DataTable
      */
     protected function filename()
     {
-        return 'Users_' . date('YmdHis');
+        return 'Country_' . date('YmdHis');
     }
 }
