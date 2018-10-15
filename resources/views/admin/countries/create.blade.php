@@ -7,20 +7,32 @@
   </div>
   <!-- /.box-header -->
   <div class="box-body">
-  	{!! Form::open(['id'=>'form_data','url'=>admin_url('cities'),'method'=>'Post')!!}
+  	{!! Form::open(['id'=>'form_data','url'=>admin_url('countries'),'method'=>'Post','files'=>true])!!}
         <div class="form-group">
-             {!!  Form::label('city_name_ar','Arabic City Name')!!}
-             {!! Form::text('city_name_ar',old('city_name_ar'),['class'=>'form-control'])!!}
+             {!!  Form::label('country_name_ar','Arabic Country Name')!!}
+             {!! Form::text('country_name_ar',old('country_name_ar'),['class'=>'form-control'])!!}
         </div>
         <div class="form-group">
-              {!!  Form::label('city_name_en','English City Name')!!}
-             {!! Form::text('city_name_en',old('city_name_en'),['class'=>'form-control'])!!}
+              {!!  Form::label('country_name_en','English Country Name')!!}
+             {!! Form::text('country_name_en',old('country_name_en'),['class'=>'form-control'])!!}
         </div>
         <div class="form-group">
 
-              {!!  Form::label('country_id','Country Id')!!}
-             {!! Form::select('country_id',$country_ids,['class'=>'form-control'])!!}
+              {!!  Form::label('code','Code')!!}
+             {!! Form::text('code',old('code'),['class'=>'form-control'])!!}
         </div>
+
+
+        <div class="form-group">
+
+              {!!  Form::label('mob','Mob')!!}
+             {!! Form::text('mob',old('mob'),['class'=>'form-control'])!!}
+        </div>
+
+        <div class="form-group">
+          {!! Form::label('logo','Logo') !!}
+          {!! Form::file('logo',['class'=>'form-control']) !!}
+        </div> 
      {!! Form::submit('Create Country',['class'=>'btn btn-primary'])!!}
 
 

@@ -30,6 +30,7 @@ class CountriesController extends Controller
     public function create()
     {
         //
+        //dd("create");
         return view('admin.Countries.create',['title'=>'Add New Country']);
     }
 
@@ -42,6 +43,7 @@ class CountriesController extends Controller
     public function store(Request $request)
     {
         //
+        //dd("store");
 
         $data=$this->validate($request,[
             'country_name_ar'=>'required',
@@ -66,8 +68,9 @@ class CountriesController extends Controller
 
      		]);
         
+//dd("store");
+      Country::create($data);
 
-        Country::create($data);
         session()->flash('success','Added New Country');
         return redirect(admin_url('countries'));
     }

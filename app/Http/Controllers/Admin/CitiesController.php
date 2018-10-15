@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Model\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\CityDatatable;
 use App\Model\City;
-use App\Model\Country;
+
 use Up;
 use Storage;
 class CitiesController extends Controller

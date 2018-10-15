@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Model\Country;
+use App\Model\City;
 use Yajra\DataTables\Services\DataTable;
 
 class CityDatatable extends DataTable
@@ -39,7 +39,7 @@ class CityDatatable extends DataTable
     {
        // return $model->newQuery()->select('id', 'add-your-columns-here', 'created_at', 'updated_at');
         //return User::query();
-        return Country::query();
+        return City::query();
     }
   
     /**
