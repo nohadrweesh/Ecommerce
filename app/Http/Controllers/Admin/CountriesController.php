@@ -18,6 +18,7 @@ class CountriesController extends Controller
     public function index(CountryDatatable $country)
     {
         //
+       // dd("kk");
         return $country->render('admin.countries.index',['title'=>'Countries Control']);
     }
 
@@ -148,25 +149,28 @@ class CountriesController extends Controller
     {
         //
         $country=Country::where('id',$id);
-        Storage::delete($country->logo);
+        Storage::delete($country->first()->logo);
         $country->delete();
-        session()->flash('success','Admin deleted successfullly');
-        return redirect(admin_url('admin'));
+        session()->flash('success','Country deleted successfullly');
+        return redirect(admin_url('countries'));
     }
 
     public function multi_delete(){
-
+//dd(request('item') );
         if(is_array(request('item')   ) ){
             foreach(request('item') as $item){
                 $country=Country::where('id',$item);
-                Storage::delete($country->logo);
+                //dd($country->get());
+                //dd($country->logo);
+                Storage::delete($country->first()->logo);
                 $country->delete();
 
             }
         }
         else{
             $country=Country::where('id',request('item'));
-            Storage::delete($country->logo);
+
+            Storage::delete($country->first()->logo);
             $country->delete();
         }
         
